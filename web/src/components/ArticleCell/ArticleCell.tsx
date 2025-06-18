@@ -6,6 +6,8 @@ import type {
   TypedDocumentNode,
 } from '@redwoodjs/web'
 
+import Article from '../Article/Article'
+
 export const QUERY: TypedDocumentNode<
   FindArticleQuery,
   FindArticleQueryVariables
@@ -34,5 +36,5 @@ export const Failure = ({
 export const Success = ({
   article,
 }: CellSuccessProps<FindArticleQuery, FindArticleQueryVariables>) => {
-  return <div>{JSON.stringify(article)}</div>
+  return <Article article={article} />
 }
