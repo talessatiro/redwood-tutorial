@@ -45,7 +45,7 @@ type CommentFormValues = {
 const CommentForm = ({ postId }: CommentFormProps) => {
   const [hasPosted, setHasPosted] = useState(false)
   const [createComment, { loading, error }] = useMutation(CREATE, {
-    refetchQueries: [{ query: CommentQuery }],
+    refetchQueries: [{ query: CommentQuery, variables: { postId } }],
     onCompleted: () => {
       setHasPosted(true)
       toast.success('Thank you for your comment!')
