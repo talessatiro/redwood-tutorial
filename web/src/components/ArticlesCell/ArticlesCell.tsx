@@ -35,10 +35,10 @@ export const Success = ({
   articles,
 }: CellSuccessProps<ArticlesQuery, ArticlesQueryVariables>) => {
   return (
-    <>
+    <div className="flex flex-col gap-6">
       {articles.map((article) => (
-        <Article key={article.id} article={article} />
+        <Article key={article.id} article={article} summary={false} />
       ))}
-    </>
+    </div>
   )
 }
