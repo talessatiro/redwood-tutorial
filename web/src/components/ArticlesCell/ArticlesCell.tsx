@@ -37,7 +37,7 @@ export const Success = ({
   return (
     <div className="flex flex-col gap-6">
       {articles.map((article) => (
-        <Article key={article.id} article={article} summary={false} />
+        <Article key={article.id} article={article} summary />
       ))}
     </div>
   )

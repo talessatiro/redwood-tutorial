@@ -2,6 +2,7 @@ import { Post } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
+import CommentForm from 'src/components/CommentForm'
 import CommentsCell from 'src/components/CommentsCell'
 
 type ArticleProps = {
@@ -11,18 +12,22 @@ type ArticleProps = {
 
 const Article = ({ article, summary }: ArticleProps) => {
   return (
-    <div className="bg-gray-200 p-2">
-      <article>
-        <header>
-          <h2>
-            <Link to={routes.article({ id: article.id })}>{article.title}</Link>
-          </h2>
-        </header>
-        <div>{article.body}</div>
-        <div>Posted at: {article.createdAt}</div>
-        {summary && <CommentsCell />}
-      </article>
-    </div>
+    <article>
+      <header>
+        <h2 className="text-xl text-blue-700 font-semibold">
+          <Link to={routes.article({ id: article.id })}>{article.title}</Link>
+        </h2>
+      </header>
+      <div className="mt-2 text-gray-900 font-light">{article.body}</div>
+      {!summary && (
+        <div className="mt-12">
+          <CommentForm postId={article.id} />
+          <div className="mt-12">
+            <CommentsCell />
+          </div>
+        </div>
+      )}
+    </article>
   )
 }
 

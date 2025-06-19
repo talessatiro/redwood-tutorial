@@ -36,7 +36,7 @@ export const Success = ({
   comments,
 }: CellSuccessProps<CommentsQuery, CommentsQueryVariables>) => {
   return (
-    <div className="space-gap-8">
+    <div className="flex flex-col gap-8">
       {comments.map((comment) => (
         <Comment key={comment.id} comment={comment} />
       ))}

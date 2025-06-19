@@ -16,7 +16,7 @@ import {
   useForm,
 } from '@redwoodjs/forms'
 import { Metadata, useMutation } from '@redwoodjs/web'
-import { toast, Toaster } from '@redwoodjs/web/toast'
+import { toast } from '@redwoodjs/web/toast'
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {
@@ -50,21 +50,25 @@ const ContactPage = () => {
   return (
     <>
       <Metadata title="Contact" description="Contact page" />
-      <Toaster />
 
-      <Form onSubmit={onSubmit} error={error} formMethods={formMethods}>
+      <Form
+        className="mt-4 w-full"
+        onSubmit={onSubmit}
+        error={error}
+        formMethods={formMethods}
+      >
         <FormError error={error} wrapperClassName="form-error" />
-        <Label name="name" errorClassName="error">
-          Name
+        <Label name="name" className="block text-sm text-gray-600 uppercase">
+          Name *
         </Label>
         <TextField
           name="name"
           validation={{ required: true }}
-          errorClassName="error"
+          className="block w-full p-1 border rounded text-xs"
         />
         <FieldError name="name" className="error" />
-        <Label name="email" errorClassName="error">
-          Email
+        <Label name="email" className="block text-sm text-gray-600 uppercase">
+          Email *
         </Label>
         <TextField
           name="email"
@@ -75,19 +79,24 @@ const ContactPage = () => {
               message: 'Please enter a valid email address',
             },
           }}
-          errorClassName="error"
+          className="block w-full p-1 border rounded text-xs"
         />
         <FieldError name="email" className="error" />
-        <Label name="message" errorClassName="error">
-          Message
+        <Label name="message" className="block text-sm text-gray-600 uppercase">
+          Message *
         </Label>
         <TextAreaField
           name="message"
           validation={{ required: true }}
-          errorClassName="error"
+          className="block w-full p-1 border rounded text-xs"
         />
         <FieldError name="message" className="error" />
-        <Submit disabled={loading}>Save</Submit>
+        <Submit
+          className="block mt-4 bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50"
+          disabled={loading}
+        >
+          Save
+        </Submit>
       </Form>
     </>
   )

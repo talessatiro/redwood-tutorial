@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
@@ -11,7 +12,8 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
 
   return (
     <>
-      <header>
+      <Toaster />
+      <header className="ml-4 mr-4">
         <div className="flex-between">
           <h1>
             <Link to={routes.home()}>Redwood Blog</Link>
@@ -41,7 +43,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
           </ul>
         </nav>
       </header>
-      <main>{children}</main>
+      <main className="pl-4 pr-4 pb-4">{children}</main>
     </>
   )
 }
