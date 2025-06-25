@@ -58,16 +58,16 @@ const ContactPage = () => {
         formMethods={formMethods}
       >
         <FormError error={error} wrapperClassName="form-error" />
-        <Label name="name" className="block text-sm text-gray-600 uppercase">
+        <Label name="name" className="block text-sm uppercase text-gray-600">
           Name *
         </Label>
         <TextField
           name="name"
           validation={{ required: true }}
-          className="block w-full p-1 border rounded text-xs"
+          className="block w-full rounded border p-1 text-xs"
         />
         <FieldError name="name" className="error" />
-        <Label name="email" className="block text-sm text-gray-600 uppercase">
+        <Label name="email" className="block text-sm uppercase text-gray-600">
           Email *
         </Label>
         <TextField
@@ -79,20 +79,20 @@ const ContactPage = () => {
               message: 'Please enter a valid email address',
             },
           }}
-          className="block w-full p-1 border rounded text-xs"
+          className="block w-full rounded border p-1 text-xs"
         />
         <FieldError name="email" className="error" />
-        <Label name="message" className="block text-sm text-gray-600 uppercase">
+        <Label name="message" className="block text-sm uppercase text-gray-600">
           Message *
         </Label>
         <TextAreaField
           name="message"
           validation={{ required: true }}
-          className="block w-full p-1 border rounded text-xs"
+          className="block h-24 w-full rounded border p-1 text-xs"
         />
         <FieldError name="message" className="error" />
         <Submit
-          className="block mt-4 bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50"
+          className="mt-4 block rounded bg-blue-500 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white disabled:opacity-50"
           disabled={loading}
         >
           Save

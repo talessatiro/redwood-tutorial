@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 
 import CommentForm from 'src/components/CommentForm'
 import CommentsCell from 'src/components/CommentsCell'
+import { timeTag } from 'src/lib/formatters'
 
 type ArticleProps = {
   article: Post
@@ -13,12 +14,18 @@ type ArticleProps = {
 const Article = ({ article, summary }: ArticleProps) => {
   return (
     <article>
-      <header>
-        <h2 className="text-xl text-blue-700 font-semibold">
-          <Link to={routes.article({ id: article.id })}>{article.title}</Link>
-        </h2>
-      </header>
-      <div className="mt-2 text-gray-900 font-light">{article.body}</div>
+      <div className="text-xs">
+        <time className="text-gray-500">{timeTag(article.createdAt)}</time>
+      </div>
+      <div className="flex flex-col gap-1">
+        <Link
+          className="mt-3 text-lg font-semibold text-gray-900 hover:underline"
+          to={routes.article({ id: article.id })}
+        >
+          {article.title}
+        </Link>
+        <p className="text-sm text-gray-600">{article.body}</p>
+      </div>
       {!summary && (
         <div className="mt-12">
           <CommentForm postId={article.id} />

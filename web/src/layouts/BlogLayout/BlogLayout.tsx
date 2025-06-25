@@ -15,12 +15,21 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
       <Toaster />
       <header className="mx-4 mt-4">
         <div className="flex justify-between">
-          <h1>
-            <Link to={routes.home()}>Redwood Blog</Link>
-          </h1>
+          <div className="flex items-center gap-2">
+            <img
+              className="size-8"
+              src="https://d33wubrfki0l68.cloudfront.net/72b0d56596a981835c18946d6c4f8a968b08e694/82254/images/logo.svg"
+              alt="RedwoodJS pinecone logo"
+            />
+            <h1>
+              <Link to={routes.home()}>Redwood Blog</Link>
+            </h1>
+          </div>
           {isAuthenticated ? (
             <div className="flex items-center gap-4">
-              <span>Logged in as {currentUser.email}</span>{' '}
+              <span>
+                Logged in as <strong>{currentUser.email}</strong>
+              </span>{' '}
               <button
                 className="block rounded bg-blue-500 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-white disabled:opacity-50"
                 type="button"
